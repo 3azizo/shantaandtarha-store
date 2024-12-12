@@ -56,8 +56,8 @@ table th {
   
 }
 .search-color{
-  border-color: #fc684b !important;
-  color: #fc684b !important;
+  border-color: #ff00007f !important;
+  color: #ff00007f !important;
 background-color: #171717;
 }
 @media (min-width:768px){
