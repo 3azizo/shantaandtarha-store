@@ -11,9 +11,9 @@ const Meta = ({ title, description, keywords }) => {
 };
 
 Meta.defaultProps = {
-  title: 'Welcome To Namra Tech shop',
-  description: 'We sell the best products for cheap',
-  keywords: 'electronics, buy electronics, cheap electroincs',
+  title: 'شنطة وطرحة',
+  description: 'محل شنطة وطرحة بيع منتجات ملابس بسعر مناسب جدا',
+  keywords: 'ملابس نسائية , girls clothings, clothing',
 };
 
 export default Meta;
