@@ -33,7 +33,6 @@ const PlaceOrderScreen = () => {
         paymentMethod: cart.paymentMethod,
         itemsPrice: cart.itemsPrice,
         shippingPrice: cart.shippingPrice,
-        taxPrice: cart.taxPrice,
         totalPrice: cart.totalPrice,
       }).unwrap();
       dispatch(clearCartItems());
@@ -54,9 +53,9 @@ const PlaceOrderScreen = () => {
               <p>
                 <strong>Address:</strong>
                 {cart.shippingAddress.address}, {cart.shippingAddress.city}{' '}
-                {cart.shippingAddress.postalCode},{' '}
                 {cart.shippingAddress.country}
               </p>
+              <p> <strong> رقم التليفون:</strong>{cart.shippingAddress.phoneNum},{' '} </p>
             </ListGroup.Item>
 
             <ListGroup.Item>

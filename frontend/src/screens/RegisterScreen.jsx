@@ -12,7 +12,6 @@ import { toast } from 'react-toastify';
 const RegisterScreen = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [phoneNum,setPhoneNum]=useState("")
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
@@ -40,10 +39,9 @@ const RegisterScreen = () => {
       toast.error('Passwords do not match');
     } else {
       try {
-        const res = await register({ name, email,phoneNum, password }).unwrap();
+        const res = await register({ name, email, password }).unwrap();
         dispatch(setCredentials({ ...res }));
         navigate(redirect);
-        console.log(phoneNum);
         
       } catch (err) {
         toast.error(err?.data?.message || err.error);
@@ -72,15 +70,6 @@ const RegisterScreen = () => {
             placeholder='Enter email'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-          ></Form.Control>
-        </Form.Group>
-        <Form.Group className='my-2' controlId='phoneNum'>
-          <Form.Label>Phone Number</Form.Label>
-          <Form.Control
-            type='name'
-            placeholder='your phone num'
-            value={phoneNum}
-            onChange={(e) => setPhoneNum(e.target.value)}
           ></Form.Control>
         </Form.Group>
 

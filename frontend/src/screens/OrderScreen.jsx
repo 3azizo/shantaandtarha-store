@@ -120,10 +120,10 @@ const OrderScreen = () => {
                 <strong>Email: </strong>{' '}
                 <a href={`mailto:${order.user.email}`}>{order.user.email}</a>
               </p>
+              <p> <strong>رقم الهاتف: </strong> {order.shippingAddress.phoneNum},{' '} </p>
               <p>
                 <strong>العنوان:</strong>
                 {order.shippingAddress.address}, {order.shippingAddress.city}{' '}
-                {order.shippingAddress.postalCode},{' '}
                 {order.shippingAddress.country}
               </p>
               {order.isDelivered ? (
