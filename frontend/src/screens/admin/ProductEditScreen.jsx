@@ -52,6 +52,8 @@ const ProductEditScreen = () => {
       }).unwrap(); // NOTE: here we need to unwrap the Promise to catch any rejection in our catch block
       toast.success('Product updated');
       refetch();
+      console.log(category);
+      
       navigate('/admin/productlist');
     } catch (err) {
       toast.error(err?.data?.message || err.error);
@@ -154,12 +156,20 @@ const ProductEditScreen = () => {
 
             <Form.Group controlId='category'>
               <Form.Label>فئة</Form.Label>
-              <Form.Control
+              {/* <Form.Control
                 type='text'
                 placeholder='Enter category'
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
-              ></Form.Control>
+              ></Form.Control> */}
+              <Form.Select name="category" id="category" value={category} onChange={(e) => setCategory(e.target.value)} >
+                  <option value="شنط">شنط</option>
+                  <option value="طرح">طرح</option>
+                  <option value="ملابس محجبات">ملابس محجبات</option>
+                  <option value="ميكب">ميكب</option>
+                  <option value="مستحضرات تجميل">مستحضرات تجميل</option>
+                  <option value="أكسسوارات">أكسسوارات</option>
+              </Form.Select>
             </Form.Group>
 
             <Form.Group controlId='description'>

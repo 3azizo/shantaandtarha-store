@@ -49,6 +49,26 @@ const Header = () => {
                   </Badge>
                 )}
               </Nav.Link>
+              <NavDropdown title='الاقسام' id='category'>
+                  <NavDropdown.Item as={Link} to='/categories/شنط'>
+                  شنط                  
+                  </NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to='/categories/ طرح'>
+                  طرح
+                  </NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to='/categories/ملابس محجبات'>
+                  ملابس محجبات
+                  </NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to='/categories/ميكب'>
+                  ميكب
+                  </NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to='/categories/مستحضرات تجميل'>
+                  مستحضرات تجميل
+                  </NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to='/categories/أكسسوارات'>
+                  أكسسوارات                  
+                  </NavDropdown.Item>
+                </NavDropdown>
               {userInfo ? (
                 <>
                   <NavDropdown title={userInfo.name} id='username'>
@@ -80,6 +100,7 @@ const Header = () => {
                   </NavDropdown.Item>
                 </NavDropdown>
               )}
+               
             </Nav>
           </Navbar.Collapse>
         </Container>
