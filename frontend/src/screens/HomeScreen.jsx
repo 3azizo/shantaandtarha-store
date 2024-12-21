@@ -16,7 +16,7 @@ const HomeScreen = () => {
     keyword,
     pageNumber,
   });
-  // console.log(data.products);
+  console.log(data);
   
 
   return (
@@ -40,7 +40,7 @@ const HomeScreen = () => {
           <h1>أحدث المنتجات </h1>
           <Row>
             {data.products.map((product) =>  {
-              console.log(product);
+              // console.log(product);
               
               return <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
                        <Product product={product} />
