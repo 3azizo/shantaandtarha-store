@@ -169,6 +169,8 @@ const ProductEditScreen = () => {
                   <option value="ميكب">ميكب</option>
                   <option value="مستحضرات تجميل">مستحضرات تجميل</option>
                   <option value="أكسسوارات">أكسسوارات</option>
+                  <option value="شرابات">شرابات</option>
+
               </Form.Select>
             </Form.Group>
 
