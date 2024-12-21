@@ -165,7 +165,7 @@ const ProductEditScreen = () => {
               <Form.Select name="category" id="category" value={category} onChange={(e) => setCategory(e.target.value)} >
                   <option value="شنط">شنط</option>
                   <option value="طرح">طرح</option>
-                  <option value="ملابس محجبات">ملابس محجبات</option>
+                  <option value="ملابس">ملابس</option>
                   <option value="ميكب">ميكب</option>
                   <option value="مستحضرات تجميل">مستحضرات تجميل</option>
                   <option value="أكسسوارات">أكسسوارات</option>
