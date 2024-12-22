@@ -59,6 +59,12 @@ const Header = () => {
                   <NavDropdown.Item as={Link} to='/categories/ملابس'>
                   ملابس
                   </NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to='/categories/بناطيل'>
+                  بناطيل
+                  </NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to='/categories/ملابس'>
+                  ملابس
+                  </NavDropdown.Item>
                   {/* <NavDropdown.Item as={Link} to='/categories/ميكب'>
                   ميكب
                   </NavDropdown.Item> */}
