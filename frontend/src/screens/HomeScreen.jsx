@@ -49,11 +49,11 @@ const HomeScreen = () => {
              
             )}
           </Row>
-          <Paginate
+          {/* <Paginate
             pages={data.pages}
             page={data.page}
             keyword={keyword ? keyword : ''}
-          />
+          /> */}
         </>
       )}
     </>
