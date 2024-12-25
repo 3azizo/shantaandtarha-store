@@ -167,7 +167,6 @@ const ProductEditScreen = () => {
                   <option value="طرح">طرح</option>
                   <option value="ملابس">ملابس</option>
                   <option value="بناطيل">بناطيل</option>
-                  <option value="ميكب">ميكب</option>
                   <option value="مستحضرات تجميل">مستحضرات تجميل</option>
                   <option value="أكسسوارات">أكسسوارات</option>
                   <option value="شرابات">شرابات</option>
