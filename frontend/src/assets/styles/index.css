@@ -52,7 +52,7 @@ table th {
   background: rgba(0, 0, 0, 0.5);
 }
 .bg-c{
-  background-color: #171717 !important;
+  background-color: #cfb59e!important;
   
 }
 .search-color{
@@ -74,4 +74,8 @@ margin-right: 150px;
     display: block;
   
   }
+}
+.logo{
+  width: 100px;
+  height:auto
 }

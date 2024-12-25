@@ -35,7 +35,7 @@ const Header = () => {
       <Navbar  variant='dark' expand='lg' className='bg-c' collapseOnSelect>
         <Container>
           <Navbar.Brand as={Link} to='/'>
-            <img src={logo} alt='namra tech' />
+            <img src={logo} alt='shanta and tarha' className='logo'/>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav' className='larg-m'>
