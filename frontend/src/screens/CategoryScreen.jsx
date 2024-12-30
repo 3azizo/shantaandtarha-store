@@ -92,7 +92,7 @@ const CategoryScreen = () => {
                            </Col>
                        ))}
                    </Row>
-            :<h4>لا يتوفر منتج حاليا {category}</h4>}
+            :<h4>{loading?"تشرفونا في المحل":`لا يتوفر ${category} حاليا `}</h4>}
             
 
         </div>

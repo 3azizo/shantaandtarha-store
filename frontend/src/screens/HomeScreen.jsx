@@ -1,57 +1,66 @@
 import { Row, Col } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
-import { useGetProductsQuery } from '../slices/productsApiSlice';
+import { useGetTopProductsQuery, useGetProductsQuery } from '../slices/productsApiSlice';
+
 import { Link } from 'react-router-dom';
 import Product from '../components/Product';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
-import Paginate from '../components/Paginate';
+// import Paginate from '../components/Paginate';
 import ProductCarousel from '../components/ProductCarousel';
 import Meta from '../components/Meta';
 
 const HomeScreen = () => {
   const { pageNumber, keyword } = useParams();
 
-  const { data, isLoading, error } = useGetProductsQuery({
-    keyword,
-    pageNumber,
-  });
-  console.log(data);
-  
+  // Call both hooks unconditionally
+  const {
+    data: topProducts,
+    isLoading: isTopProductsLoading,
+    error: topProductsError,
+  } = useGetTopProductsQuery();
+
+  const {
+    data: productsData,
+    isLoading: isProductsLoading,
+    error: productsError,
+  } = useGetProductsQuery({ keyword, pageNumber });
+
+  // Decide which data to use
+  const products = keyword ? productsData?.products || [] : topProducts || [];
+  const isLoading = keyword ? isProductsLoading : isTopProductsLoading;
+  const error = keyword ? productsError : topProductsError;
 
   return (
     <>
       {!keyword ? (
         <ProductCarousel />
       ) : (
-        <Link to='/' className='btn btn-light mb-4'>
+        <Link to="/" className="btn btn-light mb-4">
           رجوع
         </Link>
       )}
       {isLoading ? (
         <Loader />
       ) : error ? (
-        <Message variant='danger'>
+        <Message variant="danger">
           {error?.data?.message || error.error}
         </Message>
       ) : (
         <>
           <Meta />
-          <h1>أحدث المنتجات </h1>
+          <h1>أحدث المنتجات</h1>
           <Row>
-            {data.products.map((product) =>  {
-              // console.log(product);
-              
-              return <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
-                       <Product product={product} />
-                     </Col>
-              } 
-             
-            )}
+            {products.map((product) => (
+              <Col key={product._id} sm={6} md={4} lg={3} xl={3} >
+                <Product product={product} />
+              </Col>
+            ))}
           </Row>
+          {/* Uncomment and adjust pagination logic if needed */}
           {/* <Paginate
-            pages={data.pages}
-            page={data.page}
+            pages={productsData?.pages || 1}
+            page={productsData?.page || 1}
             keyword={keyword ? keyword : ''}
           /> */}
         </>

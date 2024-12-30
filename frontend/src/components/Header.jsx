@@ -53,7 +53,7 @@ const Header = () => {
                   <NavDropdown.Item as={Link} to='/categories/شنط'>
                   شنط                  
                   </NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to='/categories/ طرح'>
+                  <NavDropdown.Item as={Link} to='/categories/طرح'>
                   طرح
                   </NavDropdown.Item>
                   <NavDropdown.Item as={Link} to='/categories/ملابس'>
@@ -61,6 +61,9 @@ const Header = () => {
                   </NavDropdown.Item>
                   <NavDropdown.Item as={Link} to='/categories/بناطيل'>
                   بناطيل
+                  </NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to='/categories/شال'>
+                  شال
                   </NavDropdown.Item>
                   
                   <NavDropdown.Item as={Link} to='/categories/مستحضرات تجميل'>

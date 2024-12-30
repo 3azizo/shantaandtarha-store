@@ -1,12 +1,17 @@
 import { Pagination } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-const Paginate = ({ pages, page, isAdmin = false, keyword = '' }) => {
+const Paginate = ({ pages, page, isAdmin = true, keyword = '' }) => {
+  
+  console.log("from paginate");
+  
   return (
     pages > 1 && (
       <Pagination>
-        {[...Array(pages).keys()].map((x) => (
-          <Pagination.Item
+        {[...Array(pages).keys()].map((x) => {
+          console.log("from paginate");
+          
+         return <Pagination.Item
             as={Link}
             key={x + 1}
             to={
@@ -20,7 +25,7 @@ const Paginate = ({ pages, page, isAdmin = false, keyword = '' }) => {
           >
             {x + 1}
           </Pagination.Item>
-        ))}
+})}
       </Pagination>
     )
   );
