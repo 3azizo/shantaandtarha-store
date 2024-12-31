@@ -105,9 +105,9 @@ const ProductScreen = () => {
                 <ListGroup variant='flush'>
                   <ListGroup.Item>
                     <Row>
-                      <Col>السعر:</Col>
+                      <Col>:</Col>
                       <Col>
-                        <strong>${product.price}</strong>
+                        <strong>{product.price} <span style={{fontSize:"16px"}}>جنيه</span></strong>
                       </Col>
                     </Row>
                   </ListGroup.Item>
