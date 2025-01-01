@@ -94,7 +94,7 @@ const ProductScreen = () => {
                     text={`${product.numReviews} reviews`}
                   />
                 </ListGroup.Item>
-                <ListGroup.Item>Price: ${product.price}</ListGroup.Item>
+                <ListGroup.Item>السعر: {product.price} <span style={{fontSize:"16px"}}>جنيه</span></ListGroup.Item>
                 <ListGroup.Item>
                   الوصف: {product.description}
                 </ListGroup.Item>
@@ -115,7 +115,7 @@ const ProductScreen = () => {
                     <Row>
                       <Col>الحالة:</Col>
                       <Col>
-                        {product.countInStock > 0 ? 'In Stock' : 'Out Of Stock'}
+                        {product.countInStock > 0 ? 'متوفر حاليا' : 'غير متوفر حاليا'}
                       </Col>
                     </Row>
                   </ListGroup.Item>
@@ -124,7 +124,7 @@ const ProductScreen = () => {
                   {product.countInStock > 0 && (
                     <ListGroup.Item>
                       <Row>
-                        <Col>Qty</Col>
+                        <Col>الكمية</Col>
                         <Col>
                           <Form.Control
                             as='select'

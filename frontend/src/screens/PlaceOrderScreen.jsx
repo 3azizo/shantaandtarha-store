@@ -87,7 +87,7 @@ const PlaceOrderScreen = () => {
                           </Link>
                         </Col>
                         <Col md={4}>
-                          {item.qty} x ${item.price} = $
+                          {item.qty} x L.E{item.price} = L.E
                           {(item.qty * (item.price * 100)) / 100}
                         </Col>
                       </Row>
@@ -107,13 +107,13 @@ const PlaceOrderScreen = () => {
               <ListGroup.Item>
                 <Row>
                   <Col>Items</Col>
-                  <Col>${cart.itemsPrice}</Col>
+                  <Col>L.E{cart.itemsPrice}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
                   <Col>Shipping</Col>
-                  <Col>${cart.shippingPrice}</Col>
+                  <Col>l.E{cart.shippingPrice}</Col>
                 </Row>
               </ListGroup.Item>
               {/* <ListGroup.Item>
@@ -125,7 +125,7 @@ const PlaceOrderScreen = () => {
               <ListGroup.Item>
                 <Row>
                   <Col>Total</Col>
-                  <Col>${cart.totalPrice}</Col>
+                  <Col>L.E{cart.totalPrice}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
@@ -140,7 +140,7 @@ const PlaceOrderScreen = () => {
                   disabled={cart.cartItems === 0}
                   onClick={placeOrderHandler}
                 >
-                  Place Order
+                 اكمال الطلب
                 </Button>
                 {isLoading && <Loader />}
               </ListGroup.Item>

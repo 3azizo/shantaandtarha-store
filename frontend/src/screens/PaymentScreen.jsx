@@ -38,7 +38,8 @@ const PaymentScreen = () => {
             <Form.Check
               className='my-2'
               type='radio'
-              label='PayPal or Credit Card'
+              // label='PayPal or Credit Card'
+              label='متاح حاليا الدفع فقط عند الاستلام'
               id='PayPal'
               name='paymentMethod'
               value='PayPal'

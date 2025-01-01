@@ -139,7 +139,8 @@ const OrderScreen = () => {
               <h2>طريقة الدفع</h2>
               <p>
                 <strong>الطريقة: </strong>
-                {order.paymentMethod}
+                الدفع عند الاستلام
+                {/* {order.paymentMethod} */}
               </p>
               {order.isPaid ? (
                 <Message variant='success'>تم الدفع على {order.paidAt}</Message>
@@ -171,7 +172,7 @@ const OrderScreen = () => {
                           </Link>
                         </Col>
                         <Col md={4}>
-                          {item.qty} x ${item.price} = ${item.qty * item.price}
+                          {item.qty} x {item.price} = {item.qty * item.price}
                         </Col>
                       </Row>
                     </ListGroup.Item>
@@ -190,13 +191,13 @@ const OrderScreen = () => {
               <ListGroup.Item>
                 <Row>
                   <Col>العناصر</Col>
-                  <Col>${order.itemsPrice}</Col>
+                  <Col>{order.itemsPrice} <span style={{fontSize:"16px"}}>جنيه</span></Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
                   <Col>الشحن</Col>
-                  <Col>${order.shippingPrice}</Col>
+                  <Col>{order.shippingPrice} <span style={{fontSize:"16px"}}>جنيه</span></Col>
                 </Row>
               </ListGroup.Item>
               {/* <ListGroup.Item>
@@ -208,7 +209,7 @@ const OrderScreen = () => {
               <ListGroup.Item>
                 <Row>
                   <Col>المجموع</Col>
-                  <Col>${order.totalPrice}</Col>
+                  <Col>{order.totalPrice} <span style={{fontSize:"16px"}}>جنيه</span></Col>
                 </Row>
               </ListGroup.Item>
               {!order.isPaid && (
