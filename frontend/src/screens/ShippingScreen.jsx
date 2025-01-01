@@ -56,7 +56,7 @@ const ShippingScreen = () => {
         <Form.Group className='my-2' controlId='phoneNum'>
           <Form.Label>رقم تليفون</Form.Label>
           <Form.Control
-            type='text'
+            type='number'
             placeholder='Enter phone number'
             value={phoneNum}
             required
