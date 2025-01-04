@@ -79,7 +79,11 @@ const ProductListScreen = () => {
               </tr>
             </thead>
             <tbody>
-              {data.products.map((product) => (
+              {data.products
+               .slice()
+               .reverse() // Reverse the array to show the newest first
+              
+              .map((product) => (
                 <tr key={product._id}>
                   <td>{product._id}</td>
                   <td>{product.name}</td>

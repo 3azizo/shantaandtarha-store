@@ -196,7 +196,7 @@ const ProductEditScreen = () => {
             </Form.Group>
 
             {/* اختيار المقاسات */}
-            {(category==="ملابس"||category==="بناطيل") &&  <Form.Group controlId="sizes">
+            {(category==="ملابس"||category==="بناطيل"||category==='ترنجات') &&  <Form.Group controlId="sizes">
               <Form.Label>المقاسات</Form.Label>
               <div>
                 {availableSizes.map((size) => (
@@ -224,7 +224,7 @@ const ProductEditScreen = () => {
               </div>
             </Form.Group>}
             {/* عرض الألوان فقط إذا كانت الفئة "طرح" */}
-            {(category === 'طرح'||category==="بناطيل") && (
+            {(category === 'طرح'||category==="بناطيل"||category==="ترنجات") && (
               <Form.Group controlId="colors">
                 <Form.Label>الألوان</Form.Label>
                 <div>
