@@ -18,9 +18,14 @@ const ProductEditScreen = () => {
   const [price, setPrice] = useState(0);
   const [image, setImage] = useState('');
   const [brand, setBrand] = useState('');
+  const [sizes, setSizes] = useState([]); // المقاسات المختارة
   const [category, setCategory] = useState('');
   const [countInStock, setCountInStock] = useState(0);
   const [description, setDescription] = useState('');
+  // color
+  const [colors, setColors] = useState([]); // تخزين الألوان المحددة
+
+
 
   const {
     data: product,
@@ -49,11 +54,11 @@ const ProductEditScreen = () => {
         category,
         description,
         countInStock,
-      }).unwrap(); // NOTE: here we need to unwrap the Promise to catch any rejection in our catch block
-      toast.success('Product updated');
+        sizes,
+        colors,
+      }).unwrap();
+      toast.success('تم تحديث المنتج بنجاح');
       refetch();
-      console.log(category);
-      
       navigate('/admin/productlist');
     } catch (err) {
       toast.error(err?.data?.message || err.error);
@@ -69,6 +74,7 @@ const ProductEditScreen = () => {
       setCategory(product.category);
       setCountInStock(product.countInStock);
       setDescription(product.description);
+      setSizes(product.sizes || []);
     }
   }, [product]);
 
@@ -83,6 +89,27 @@ const ProductEditScreen = () => {
       toast.error(err?.data?.message || err.error);
     }
   };
+
+  // المقاسات المتاحة للاختيار
+  const availableSizes =category=="ملابس" ?['S', 'M', 'L', 'XL', 'XXL',"XXXL"]:['30', '32', '34', '36', '38'];
+
+  // اختيار أو إلغاء تحديد المقاس
+  const toggleSize = (size) => {
+    if (sizes.includes(size)) {
+      setSizes(sizes.filter((s) => s !== size)); // إزالة المقاس إذا كان محددًا مسبقًا
+    } else {
+      setSizes([...sizes, size]); // إضافة المقاس
+    }
+  };
+  // تغير لون
+  const toggleColor = (color) => {
+    if (colors.includes(color)) {
+      setColors(colors.filter((c) => c !== color)); // إزالة اللون إذا كان موجودًا
+    } else {
+      setColors([...colors, color]); // إضافة اللون إذا لم يكن موجودًا
+    }
+  };
+  
 
   return (
     <>
@@ -101,36 +128,35 @@ const ProductEditScreen = () => {
             <Form.Group controlId='name'>
               <Form.Label>الاسم</Form.Label>
               <Form.Control
-                type='name'
-                placeholder='Enter name'
+                type='text'
+                placeholder='أدخل اسم المنتج'
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-              ></Form.Control>
+              />
             </Form.Group>
 
             <Form.Group controlId='price'>
               <Form.Label>السعر</Form.Label>
               <Form.Control
                 type='number'
-                placeholder='Enter price'
+                placeholder='أدخل السعر'
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
-              ></Form.Control>
+              />
             </Form.Group>
 
             <Form.Group controlId='image'>
               <Form.Label>الصورة</Form.Label>
               <Form.Control
                 type='text'
-                placeholder='Enter image url'
+                placeholder='أدخل رابط الصورة'
                 value={image}
                 onChange={(e) => setImage(e.target.value)}
-              ></Form.Control>
+              />
               <Form.Control
-                label='Choose File'
-                onChange={uploadFileHandler}
                 type='file'
-              ></Form.Control>
+                onChange={uploadFileHandler}
+              />
               {loadingUpload && <Loader />}
             </Form.Group>
 
@@ -138,58 +164,108 @@ const ProductEditScreen = () => {
               <Form.Label>الماركة</Form.Label>
               <Form.Control
                 type='text'
-                placeholder='Enter brand'
+                placeholder='أدخل الماركة'
                 value={brand}
                 onChange={(e) => setBrand(e.target.value)}
-              ></Form.Control>
+              />
             </Form.Group>
 
             <Form.Group controlId='countInStock'>
-              <Form.Label>عدد المخزون</Form.Label>
+              <Form.Label>المخزون</Form.Label>
               <Form.Control
                 type='number'
-                placeholder='Enter countInStock'
+                placeholder='أدخل الكمية'
                 value={countInStock}
                 onChange={(e) => setCountInStock(e.target.value)}
-              ></Form.Control>
+              />
             </Form.Group>
 
             <Form.Group controlId='category'>
-              <Form.Label>فئة</Form.Label>
-              {/* <Form.Control
-                type='text'
-                placeholder='Enter category'
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
-              ></Form.Control> */}
-              <Form.Select name="category" id="category" value={category} onChange={(e) => setCategory(e.target.value)} >
-                  <option value="شنط">شنط</option>
-                  <option value="طرح">طرح</option>
-                  <option value="ملابس">ملابس</option>
-                  <option value="شال">شال</option>
-                  <option value="بناطيل">بناطيل</option>
-                  <option value="مستحضرات تجميل">مستحضرات تجميل</option>
-                  <option value="أكسسوارات">أكسسوارات</option>
-                  <option value="شرابات">شرابات</option>
+              <Form.Label>الفئة</Form.Label>
+              <Form.Select value={category} onChange={(e) => setCategory(e.target.value)}>
+                <option value="شنط">شنط</option>
+                <option value="طرح">طرح</option>
+                <option value="ملابس">ملابس</option>
+                <option value="شال">شال</option>
+                <option value="بناطيل">بناطيل</option>
+                <option value="مستحضرات تجميل">مستحضرات تجميل</option>
+                <option value="أكسسوارات">أكسسوارات</option>
+                <option value="شرابات">شرابات</option>
               </Form.Select>
             </Form.Group>
+
+            {/* اختيار المقاسات */}
+            {(category==="ملابس"||category==="بناطيل") &&  <Form.Group controlId="sizes">
+              <Form.Label>المقاسات</Form.Label>
+              <div>
+                {availableSizes.map((size) => (
+                  <Button
+                    key={size}
+                    variant={sizes.includes(size) ? 'primary' : 'outline-secondary'}
+                    className="m-1"
+                    onClick={() => toggleSize(size)}
+                  >
+                    {size}
+                  </Button>
+                ))}
+              </div>
+              <div className="mt-2">
+                <strong>المقاسات المختارة:</strong>
+                {sizes.length > 0 ? (
+                  sizes.map((size) => (
+                    <Button key={size} variant="danger" className="m-1" onClick={() => toggleSize(size)}>
+                      {size} ×
+                    </Button>
+                  ))
+                ) : (
+                  <p>لم يتم تحديد أي مقاس</p>
+                )}
+              </div>
+            </Form.Group>}
+            {/* عرض الألوان فقط إذا كانت الفئة "طرح" */}
+            {category === 'طرح' && (
+              <Form.Group controlId="colors">
+                <Form.Label>الألوان</Form.Label>
+                <div>
+                  {['أحمر', 'أزرق', 'أخضر', 'أسود', 'أبيض', 'وردي'].map((color) => (
+                    <Button
+                      key={color}
+                      variant={colors.includes(color) ? 'primary' : 'outline-secondary'}
+                      className="m-1"
+                      onClick={() => toggleColor(color)}
+                    >
+                      {color}
+                    </Button>
+                  ))}
+                </div>
+                <div className="mt-2">
+                  <strong>الألوان المختارة:</strong>
+                  {colors.length > 0 ? (
+                    colors.map((color) => (
+                      <Button key={color} variant="danger" className="m-1" onClick={() => toggleColor(color)}>
+                        {color} ×
+                      </Button>
+                    ))
+                  ) : (
+                    <p>لم يتم تحديد أي لون</p>
+                  )}
+                </div>
+              </Form.Group>
+            )}
+
 
             <Form.Group controlId='description'>
               <Form.Label>الوصف</Form.Label>
               <Form.Control
                 type='text'
-                placeholder='Enter description'
+                placeholder='أدخل الوصف'
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-              ></Form.Control>
+              />
             </Form.Group>
 
-            <Button
-              type='submit'
-              variant='primary'
-              style={{ marginTop: '1rem' }}
-            >
-              تحديث
+            <Button type='submit' variant='primary' className="mt-3">
+              تحديث المنتج
             </Button>
           </Form>
         )}

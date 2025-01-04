@@ -84,3 +84,56 @@ margin-right: 150px;
 }
 
 
+.size-button {
+  background-color: white;
+  border: 1px solid #ccc;
+  color: black;
+  padding: 5px 10px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.size-button.selected {
+  background-color: blue;
+  color: white;
+}
+
+.size-remove-button {
+  background-color: red;
+  color: white;
+  padding: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+/* category */
+.icon-container img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain; /* لتجنب تشويه الصورة */
+}
+.category-card:hover {
+  transition: all 0.5s ease; /* إضافة انسيابية في التحول */
+  background-color: #cfb59e;
+  color: #fff !important;
+  transform: translateY(-5px); /* رفع البطاقة عند التمرير */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* إضافة ظل */
+}
+.porduct-card:hover {
+  transition: all 0.5s ease; /* إضافة انسيابية في التحول */
+  transform: translateY(-5px); /* رفع البطاقة عند التمرير */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* إضافة ظل */
+}
+/* .card-body {
+  transition: transform 0.3s ease;
+} */
+h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.card-title {
+  font-size: 1.1rem;
+  color: #444;
+}

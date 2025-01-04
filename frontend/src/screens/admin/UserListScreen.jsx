@@ -41,7 +41,7 @@ const UserListScreen = () => {
             <tr>
               <th>ID</th>
               <th>الاسم</th>
-              <th>رقم المحمول</th>
+              
               <th>الاميل</th>
               <th>ADMIN</th>
               <th></th>
@@ -52,7 +52,6 @@ const UserListScreen = () => {
               <tr key={user._id}>
                 <td>{user._id}</td>
                 <td>{user.name}</td>
-                <td>{user.phoneNum}</td>
                 <td>
                   <a href={`mailto:${user.email}`}>{user.email}</a>
                 </td>

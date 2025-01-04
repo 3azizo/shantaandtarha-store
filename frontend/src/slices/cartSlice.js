@@ -9,6 +9,8 @@ const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
+
+        
     addToCart: (state, action) => {
       // NOTE: we don't need user, rating, numReviews or reviews
       // in the cart

@@ -32,10 +32,30 @@ const ProductScreen = () => {
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState('');
 
+  const [selectedSize, setSelectedSize] = useState('');
+  const [selectedColor, setSelectedColor] = useState('');
+
+// const [selectedColor, setSelectedColor] = useState('');
+
+  // const addToCartHandler = () => {
+  //   dispatch(addToCart({ ...product, qty }));
+  //   navigate('/cart');
+  // };
   const addToCartHandler = () => {
-    dispatch(addToCart({ ...product, qty }));
+    if (!selectedSize&& (product.category === 'ملابس' || product.category === 'بناطيل')) {
+      toast.error('يرجى اختيار المقاس قبل إضافة المنتج إلى السلة');
+      return;
+    }
+    if (!selectedColor && product.category === 'طرح') {
+      toast.error('يرجى اختيار اللون قبل إضافة المنتج إلى السلة');
+      return;
+    }
+  
+  
+    dispatch(addToCart({ ...product, qty, selectedSize,selectedColor  })); // تضمين المقاس المختار
     navigate('/cart');
   };
+  
 
   const {
     data: product,
@@ -43,6 +63,8 @@ const ProductScreen = () => {
     refetch,
     error,
   } = useGetProductDetailsQuery(productId);
+  // console.log("product",product);
+  
 
   const { userInfo } = useSelector((state) => state.auth);
 
@@ -105,7 +127,7 @@ const ProductScreen = () => {
                 <ListGroup variant='flush'>
                   <ListGroup.Item>
                     <Row>
-                      <Col>:</Col>
+                      <Col>السعر:</Col>
                       <Col>
                         <strong>{product.price} <span style={{fontSize:"16px"}}>جنيه</span></strong>
                       </Col>
@@ -143,6 +165,41 @@ const ProductScreen = () => {
                       </Row>
                     </ListGroup.Item>
                   )}
+                  {/* size */}
+                  {(product.category === 'ملابس' || product.category === 'بناطيل') && product.sizes.length > 0 && (
+                    <div style={{padding:"10px"}}>
+                      <h4>اختر المقاس:</h4>
+                      {product.sizes.map((size) => (
+                        <Button
+                          key={size}
+                          variant={selectedSize === size ? 'primary' : 'outline-secondary'}
+                          className="m-1"
+                          onClick={() => setSelectedSize(size)}
+                        >
+                          {size}
+                        </Button>
+                      ))}
+                    </div>
+                  )}
+                  {/* color */}
+                  {/* عرض الألوان فقط إذا كانت الفئة "طرح" */}
+                  {product.category === 'طرح' && product.colors.length > 0 && (
+                    <div>
+                      <h4>اختر اللون:</h4>
+                      {product.colors.map((color) => (
+                        <Button
+                          key={color}
+                          variant={selectedColor === color ? 'primary' : 'outline-secondary'}
+                          className="m-1"
+                          onClick={() => setSelectedColor(color)}
+                        >
+                          {color}
+                        </Button>
+                      ))}
+                    </div>
+                  )}
+
+
 
                   <ListGroup.Item>
                     <Button

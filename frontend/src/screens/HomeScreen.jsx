@@ -9,6 +9,8 @@ import Message from '../components/Message';
 // import Paginate from '../components/Paginate';
 import ProductCarousel from '../components/ProductCarousel';
 import Meta from '../components/Meta';
+// 
+import AllCategories from '../components/AllCategories';
 
 const HomeScreen = () => {
   const { pageNumber, keyword } = useParams();
@@ -34,7 +36,11 @@ const HomeScreen = () => {
   return (
     <>
       {!keyword ? (
+        <>
         <ProductCarousel />
+        <AllCategories/>        
+        </>
+
       ) : (
         <Link to="/" className="btn btn-light mb-4">
           رجوع

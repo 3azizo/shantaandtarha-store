@@ -64,6 +64,9 @@ const productSchema = mongoose.Schema(
       required: true,
       default: 0,
     },
+    sizes: { type: [String], required: false, default: [] },
+    colors: { type: [String], required: false, default: [] }, // حفظ الألوان
+
   },
   {
     timestamps: true,

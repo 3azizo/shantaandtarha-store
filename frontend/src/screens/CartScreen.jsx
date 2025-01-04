@@ -33,6 +33,8 @@ const CartScreen = () => {
   const checkoutHandler = () => {
     navigate('/login?redirect=/shipping');
   };
+  console.log("from cart",cartItems);
+  
 
   return (
     <Row>
@@ -45,15 +47,60 @@ const CartScreen = () => {
         ) : (
           <ListGroup variant='flush'>
             {cartItems.map((item) => (
+  <ListGroup.Item key={item.product + item.selectedSize}>
+    <Row>
+      <Col md={2}>
+        <Image src={item.image} alt={item.name} fluid rounded />
+      </Col>
+      <Col md={3}>
+        <Link to={`/product/${item._id}`}>{item.name}</Link>
+      </Col>
+      <Col md={2}>{item.price} جنيه</Col>
+      <Col md={2}>
+      {(item.category === 'ملابس' || item.category === 'بناطيل')? <strong>المقاس: {item.selectedSize}</strong>:""}
+        {/* عرض المقاس */}
+        {item.category === 'طرح' && <strong>اللون: {item.selectedColor}</strong>}
+      </Col>
+      <Col md={2}>
+        <Form.Control
+          as="select"
+          value={item.qty}
+          onChange={(e) =>
+            dispatch(addToCartHandler({ ...item, qty: Number(e.target.value) }))
+          }
+        >
+          {[...Array(item.countInStock).keys()].map((x) => (
+            <option key={x + 1} value={x + 1}>
+              {x + 1}
+            </option>
+          ))}
+        </Form.Control>
+      </Col>
+      <Col md={2}>
+                    <Button
+                      type='button'
+                      variant='light'
+                      onClick={() => removeFromCartHandler(item._id)}
+                    >
+                      <FaTrash />
+                    </Button>
+                  </Col>
+    </Row>
+  </ListGroup.Item>
+))}
+
+            {/* {cartItems.map((item) => (
               <ListGroup.Item key={item._id}>
                 <Row>
                   <Col md={2}>
                     <Image src={item.image} alt={item.name} fluid rounded />
                   </Col>
+
                   <Col md={3}>
                     <Link to={`/product/${item._id}`}>{item.name}</Link>
                   </Col>
                   <Col md={2}>{item.price} <span style={{fontSize:"16px"}}>جنيه</span></Col>
+                  <Col md={2}>{item.size}</Col>
                   <Col md={2}>
                     <Form.Control
                       as='select'
@@ -80,7 +127,7 @@ const CartScreen = () => {
                   </Col>
                 </Row>
               </ListGroup.Item>
-            ))}
+            ))} */}
           </ListGroup>
         )}
       </Col>
