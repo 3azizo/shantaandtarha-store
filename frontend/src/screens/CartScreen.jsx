@@ -58,8 +58,8 @@ const CartScreen = () => {
       <Col md={2}>{item.price} جنيه</Col>
       <Col md={2}>
       {(item.category === 'ملابس' || item.category === 'بناطيل')? <strong>المقاس: {item.selectedSize}</strong>:""}
-        {/* عرض المقاس */}
-        {item.category === 'طرح' && <strong>اللون: {item.selectedColor}</strong>}
+        {/* عرض المقاس */} <br />
+        {(item.category === 'طرح' || item.category === 'بناطيل')&& <strong>اللون: {item.selectedColor}</strong>}
       </Col>
       <Col md={2}>
         <Form.Control

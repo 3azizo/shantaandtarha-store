@@ -223,7 +223,7 @@ const ProductEditScreen = () => {
               </div>
             </Form.Group>}
             {/* عرض الألوان فقط إذا كانت الفئة "طرح" */}
-            {category === 'طرح' && (
+            {(category === 'طرح'||category==="بناطيل") && (
               <Form.Group controlId="colors">
                 <Form.Label>الألوان</Form.Label>
                 <div>

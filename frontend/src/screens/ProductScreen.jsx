@@ -46,7 +46,7 @@ const ProductScreen = () => {
       toast.error('يرجى اختيار المقاس قبل إضافة المنتج إلى السلة');
       return;
     }
-    if (!selectedColor && product.category === 'طرح') {
+    if (!selectedColor &&( product.category === 'طرح' || product.category === 'بناطيل')) {
       toast.error('يرجى اختيار اللون قبل إضافة المنتج إلى السلة');
       return;
     }
@@ -183,8 +183,8 @@ const ProductScreen = () => {
                   )}
                   {/* color */}
                   {/* عرض الألوان فقط إذا كانت الفئة "طرح" */}
-                  {product.category === 'طرح' && product.colors.length > 0 && (
-                    <div>
+                  {(product.category === 'طرح'|| product.category === 'بناطيل') && product.colors.length > 0 && (
+                    <div style={{padding:"10px"}}>
                       <h4>اختر اللون:</h4>
                       {product.colors.map((color) => (
                         <Button
