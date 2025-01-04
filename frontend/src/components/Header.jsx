@@ -56,11 +56,17 @@ const Header = () => {
                   <NavDropdown.Item as={Link} to='/categories/طرح'>
                   طرح
                   </NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to='/categories/مكملات حجاب'>
+                 مكملات حجاب
+                  </NavDropdown.Item>
                   <NavDropdown.Item as={Link} to='/categories/ملابس'>
                   ملابس
                   </NavDropdown.Item>
                   <NavDropdown.Item as={Link} to='/categories/بناطيل'>
                   بناطيل
+                  </NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to='/categories/ترنجات'>
+                  ترنجات
                   </NavDropdown.Item>
                   <NavDropdown.Item as={Link} to='/categories/شال'>
                   شال

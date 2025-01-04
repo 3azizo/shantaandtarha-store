@@ -14,6 +14,7 @@ const AllCategories = () => {
   const categories = [
     { name: 'شنط', icon: shoppingBag, path: '/categories/شنط' },
     { name: 'طرح', icon: hijab, path: '/categories/طرح' },
+    { name: 'مكملات حجاب', icon: hijab, path: '/categories/مكملات حجاب' },
     { name: 'ملابس', icon: cloths, path: '/categories/ملابس' },
     { name: 'شال', icon: scarf, path: '/categories/شال' },
     { name: 'بناطيل', icon: trousers, path: '/categories/بناطيل' },
