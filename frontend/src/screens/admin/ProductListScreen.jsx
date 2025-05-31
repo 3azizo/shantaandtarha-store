@@ -3,7 +3,7 @@ import { FaEdit, FaPlus, FaTrash } from 'react-icons/fa';
 import { Link, useParams } from 'react-router-dom';
 import Message from '../../components/Message';
 import Loader from '../../components/Loader';
-import Paginate from '../../components/Paginate';
+// import Paginate from '../../components/Paginate';
 import {
   useGetProductsQuery,
   useDeleteProductMutation,
