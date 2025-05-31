@@ -53,7 +53,7 @@ const CategoryScreen = () => {
     }
     console.log(category===null,category==="");
     
-    if(category===null||category===""||category==undefined){
+    if(category===null||category===""||category===undefined){
         return ( 
             <div>
                 <h1>Categories</h1>
